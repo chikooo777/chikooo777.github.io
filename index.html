@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durvesh Raysing — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#111118;
+  --bg3:#16161f;
+  --surface:#1c1c28;
+  --border:#2a2a3a;
+  --accent:#7c6cfa;
+  --accent2:#a78bfa;
+  --accent3:#38bdf8;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --text:#f0eeff;
+  --muted:#8b8baa;
+  --dim:#5a5a78;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Syne',sans-serif;
+  font-weight:800;font-size:1.1rem;
+  letter-spacing:-0.02em;
+  background:linear-gradient(135deg,var(--accent2),var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:12px;font-weight:400;
+  color:var(--muted);text-decoration:none;letter-spacing:0.05em;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--accent2)}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:7rem 2.5rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 380px;gap:4rem;
+  align-items:center;max-width:1100px;margin:0 auto;width:100%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;
+  color:var(--accent2);
+  background:rgba(124,108,250,0.1);
+  border:1px solid rgba(124,108,250,0.3);
+  border-radius:100px;padding:4px 14px;margin-bottom:1.5rem;
+}
+.dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+h1{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;
+  letter-spacing:-0.03em;margin-bottom:0.5rem;
+}
+h1 span{
+  background:linear-gradient(135deg,#a78bfa,#38bdf8,#34d399);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-role{
+  font-family:'DM Mono',monospace;font-size:13px;
+  color:var(--accent3);letter-spacing:0.05em;margin-bottom:1.5rem;
+}
+.hero-bio{color:var(--muted);font-size:15px;max-width:520px;line-height:1.8;margin-bottom:2rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:0.65rem 1.4rem;border-radius:8px;
+  font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.05em;
+  text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;
+}
+.btn-primary{
+  background:var(--accent);color:#fff;
+}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-outline{
+  background:transparent;color:var(--text);
+  border:1px solid var(--border);
+}
+.btn-outline:hover{border-color:var(--accent2);color:var(--accent2)}
+
+/* hero card */
+.hero-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:2rem;
+  position:relative;overflow:hidden;
+}
+.hero-card::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,108,250,0.15),transparent 70%);
+}
+.avatar{
+  width:72px;height:72px;border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;
+  margin-bottom:1.2rem;color:#fff;
+}
+.card-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:4px}
+.card-sub{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:1.2rem}
+.card-info{display:flex;flex-direction:column;gap:8px;margin-bottom:1.2rem}
+.card-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.card-row a{color:var(--accent3);text-decoration:none}
+.card-row a:hover{color:var(--accent2)}
+.card-icon{font-size:13px;color:var(--dim)}
+.card-badges{display:flex;gap:6px;flex-wrap:wrap;padding-top:1rem;border-top:1px solid var(--border)}
+.badge{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.05em;
+  padding:3px 10px;border-radius:100px;
+}
+.badge-blue{background:rgba(56,189,248,0.12);color:var(--accent3);border:1px solid rgba(56,189,248,0.25)}
+.badge-purple{background:rgba(124,108,250,0.12);color:var(--accent2);border:1px solid rgba(124,108,250,0.25)}
+.badge-green{background:rgba(52,211,153,0.12);color:var(--green);border:1px solid rgba(52,211,153,0.25)}
+
+/* bg decoration */
+.bg-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:60px 60px;opacity:0.15;pointer-events:none;
+}
+.bg-glow{
+  position:absolute;top:-200px;left:-100px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,108,250,0.08),transparent 65%);
+  pointer-events:none;
+}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
+.section-label{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;
+  color:var(--accent2);margin-bottom:0.5rem;text-transform:uppercase;
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-0.02em;margin-bottom:3rem;
+}
+.section-title span{color:var(--dim)}
+
+/* ── EXPERIENCE ── */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:0;top:8px;bottom:0;
+  width:1px;background:linear-gradient(to bottom,var(--accent),var(--border));
+}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-dot{
+  position:absolute;left:-2rem;top:6px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg);
+  box-shadow:0 0 0 3px rgba(124,108,250,0.2);
+}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.tl-role{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+.tl-date{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--dim);background:var(--surface);
+  border:1px solid var(--border);border-radius:100px;padding:2px 10px;
+}
+.tl-company{font-size:13px;color:var(--accent3);margin-bottom:0.75rem}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tl-bullets li{
+  font-size:13px;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.6;
+}
+.tl-bullets li::before{content:'→';position:absolute;left:0;color:var(--dim)}
+
+/* ── PROJECTS ── */
+.project-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.project-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:1.75rem;position:relative;overflow:hidden;
+  transition:border-color 0.3s,transform 0.2s;
+}
+.project-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.project-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent3));opacity:0;
+  transition:opacity 0.3s;
+}
+.project-card:hover::after{opacity:1}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px}
+.proj-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+.proj-org{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent3)}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-family:'DM Mono',monospace;font-size:10px;
+  padding:3px 10px;border-radius:100px;
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  color:var(--muted);letter-spacing:0.04em;
+}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.skill-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:1.25rem;
+}
+.skill-cat{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;
+  color:var(--accent2);margin-bottom:0.8rem;text-transform:uppercase;
+}
+.skill-pills{display:flex;flex-wrap:wrap;gap:6px}
+.skill-pill{
+  font-size:12px;padding:4px 10px;border-radius:6px;
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--muted);
+}
+
+/* ── CERTIFICATIONS ── */
+.cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.cert-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:1.1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;
+}
+.cert-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+}
+.cert-icon.nptel{background:rgba(251,191,36,0.12);color:var(--amber)}
+.cert-icon.aws{background:rgba(255,153,0,0.12);color:#ff9900}
+.cert-icon.google{background:rgba(66,133,244,0.12);color:#4285f4}
+.cert-icon.ms{background:rgba(0,120,212,0.12);color:#0078d4}
+.cert-icon.gen{background:rgba(124,108,250,0.12);color:var(--accent2)}
+.cert-icon.udemy{background:rgba(52,211,153,0.12);color:var(--green)}
+.cert-body{flex:1}
+.cert-name{font-size:13px;font-weight:500;margin-bottom:2px;line-height:1.4}
+.cert-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--dim)}
+
+/* ── PUBLICATIONS ── */
+.pub-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:1.75rem;display:flex;gap:1.5rem;align-items:flex-start;
+}
+.pub-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.pub-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:6px;line-height:1.4}
+.pub-journal{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent3);margin-bottom:8px}
+.pub-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.edu-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:1.5rem;
+}
+.edu-deg{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px}
+.edu-inst{font-size:13px;color:var(--accent3);margin-bottom:4px}
+.edu-year{font-family:'DM Mono',monospace;font-size:11px;color:var(--dim);margin-bottom:0.8rem}
+.edu-note{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* ── CONTACT ── */
+#contact{text-align:center;padding-bottom:4rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.contact-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:0.7rem 1.3rem;border-radius:10px;
+  background:var(--surface);border:1px solid var(--border);
+  font-family:'DM Mono',monospace;font-size:12px;color:var(--text);
+  text-decoration:none;transition:all 0.2s;
+}
+.contact-chip:hover{border-color:var(--accent2);color:var(--accent2)}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);
+  text-align:center;padding:1.5rem 2.5rem;
+  font-family:'DM Mono',monospace;font-size:11px;color:var(--dim);
+}
+
+/* ── STATS BAR ── */
+.stats-bar{
+  background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:1.5rem 2.5rem;display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;
+}
+.stat{text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:var(--accent2)}
+.stat-lbl{font-family:'DM Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:0.08em}
+
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  nav{padding:1rem 1.25rem}
+  .nav-links{gap:1rem}
+  section{padding:3.5rem 1.25rem}
+  .stats-bar{gap:2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">DR</div>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="position:relative;overflow:hidden">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <section id="about" style="max-width:1100px;margin:0 auto">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">
+          <span class="dot"></span>
+          Available for opportunities
+        </div>
+        <h1>Durvesh<br><span>Raysing</span></h1>
+        <p class="hero-role">Python Developer · AI/ML Engineer · AWS Cloud Practitioner</p>
+        <p class="hero-bio">MCA student at D.Y. Patil Institute, Pune. Building enterprise-grade AI systems and scalable intelligent applications. Leading cross-functional teams in real-world AI proctoring and interview intelligence projects.</p>
+        <div class="hero-cta">
+          <a href="mailto:Durveshraysing43@gmail.com" class="btn btn-primary">✉ Get in touch</a>
+          <a href="https://github.com/DurveshRaysing1435" class="btn btn-outline">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/in/durvesh-raysing07" class="btn btn-outline">↗ LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="avatar">DR</div>
+        <div class="card-name">Durvesh Raysing</div>
+        <div class="card-sub">MCA — Sem IV · Akurdi, Pune</div>
+        <div class="card-info">
+          <div class="card-row"><span class="card-icon">@</span><a href="mailto:Durveshraysing43@gmail.com">Durveshraysing43@gmail.com</a></div>
+          <div class="card-row"><span class="card-icon">☎</span>+91-8530296612</div>
+          <div class="card-row"><span class="card-icon">⌥</span><a href="https://github.com/DurveshRaysing1435">DurveshRaysing1435</a></div>
+          <div class="card-row"><span class="card-icon">⌥</span><a href="https://github.com/chikooo777">chikooo777</a></div>
+          <div class="card-row"><span class="card-icon">↗</span><a href="https://www.linkedin.com/in/durvesh-raysing07">durvesh-raysing07</a></div>
+          <div class="card-row"><span class="card-icon">◎</span>Pune, Maharashtra, India</div>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-blue">AWS Certified</span>
+          <span class="badge badge-purple">AI/ML</span>
+          <span class="badge badge-green">Open to Work</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">4+</div><div class="stat-lbl">Months Interning</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">AI Modules Built</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-lbl">Certifications</div></div>
+  <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">Publication</div></div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// 01 — work experience</div>
+  <div class="section-title">Where I've <span>Worked</span></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-header">
+        <div class="tl-role">Project Captain (Team Lead)</div>
+        <div class="tl-date">Apr 2026 – Present</div>
+      </div>
+      <div class="tl-company">UptoSkills — Remote, Pune/Pimpri-Chinchwad Area</div>
+      <ul class="tl-bullets">
+        <li>Leading a cross-functional team building an enterprise-grade AI Interview Monitoring and Assessment System end-to-end</li>
+        <li>Architecting modular components: Failure Handling & Recovery Engine (FastAPI, Pydantic), AI Interview Intelligence Engine with adaptive difficulty, and a Real-Time Interview Integrity Monitor</li>
+        <li>Overseeing sprint planning, task delegation, code review, and technical documentation</li>
+        <li>Integrating OpenAI Whisper & Librosa for speech analysis, offline K-Means ML for multi-speaker detection, and webcam-based gaze tracking with object detection</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent3);box-shadow:0 0 0 3px rgba(56,189,248,0.2)"></div>
+      <div class="tl-header">
+        <div class="tl-role">Python Intern</div>
+        <div class="tl-date">Feb 2026 – Present</div>
+      </div>
+      <div class="tl-company">UptoSkills — Remote, Pune/Pimpri-Chinchwad Area</div>
+      <ul class="tl-bullets">
+        <li>Developing backend modules for the AI Proctoring System using PostgreSQL, Flask, and RESTful API design</li>
+        <li>Contributing to webcam-based analysis, browser activity monitoring, risk scoring, and automated report generation</li>
+        <li>Collaborating on system integration, testing, and documentation in a structured internship program</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// 02 — projects</div>
+  <div class="section-title">What I've <span>Built</span></div>
+  <div class="project-grid">
+    <div class="project-card">
+      <div class="proj-top">
+        <div>
+          <div class="proj-name">AI-Based Interview Monitoring & Evaluation System</div>
+          <div class="proj-org">UptoSkills · Feb 2026 – Present</div>
+        </div>
+      </div>
+      <p class="proj-desc">An intelligent proctoring platform for online interviews, assessments, and examinations. Features webcam-based analysis, real-time gaze tracking, object detection, and live risk scoring. Implements multi-speaker detection using offline K-Means clustering with Librosa and OpenAI Whisper for speech analysis. Built three modular sub-systems: Failure Handling & Recovery Engine, AI Interview Intelligence Engine with adaptive difficulty, and a Real-Time Interview Integrity Monitor.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Flask</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">OpenAI Whisper</span>
+        <span class="tag">K-Means ML</span>
+        <span class="tag">Librosa</span>
+        <span class="tag">Pydantic</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">MediaPipe</span>
+        <span class="tag">YOLOv8</span>
+        <span class="tag">WebSocket</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="proj-top">
+        <div>
+          <div class="proj-name">Blood Donor & Donation Management System</div>
+          <div class="proj-org">BCA Final Project · Dr. Babasaheb Ambedkar Marathwada University</div>
+        </div>
+      </div>
+      <p class="proj-desc">A full-stack web application for managing blood donation records, donor registration, and blood inventory. Built a complete frontend and backend solution enabling efficient donor-recipient matching and blood bank management.</p>
+      <div class="proj-tags">
+        <span class="tag">PHP</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">HTML/CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// 03 — technical skills</div>
+  <div class="section-title">My <span>Toolkit</span></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Languages & Frameworks</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">PHP</span>
+        <span class="skill-pill">Flask</span>
+        <span class="skill-pill">FastAPI</span>
+        <span class="skill-pill">React</span>
+        <span class="skill-pill">Three.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">AI / ML & Data</div>
+      <div class="skill-pills">
+        <span class="skill-pill">OpenAI Whisper</span>
+        <span class="skill-pill">Librosa</span>
+        <span class="skill-pill">K-Means</span>
+        <span class="skill-pill">LLM Frameworks</span>
+        <span class="skill-pill">Computer Vision</span>
+        <span class="skill-pill">Affective Computing</span>
+        <span class="skill-pill">YOLOv8</span>
+        <span class="skill-pill">MediaPipe</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Cloud & DevOps</div>
+      <div class="skill-pills">
+        <span class="skill-pill">AWS (Certified)</span>
+        <span class="skill-pill">Cloud Architecture</span>
+        <span class="skill-pill">IaaS/PaaS/SaaS</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Git / GitHub</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Databases & Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">SQLite</span>
+        <span class="skill-pill">Postman</span>
+        <span class="skill-pill">VS Code</span>
+        <span class="skill-pill">Pydantic</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Soft Skills</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Team Leadership</span>
+        <span class="skill-pill">Analytical Thinking</span>
+        <span class="skill-pill">Project Management</span>
+        <span class="skill-pill">Technical Docs</span>
+        <span class="skill-pill">Market Research</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+  <div class="section-label">// 04 — certifications</div>
+  <div class="section-title">Credentials & <span>Learning</span></div>
+  <div class="cert-list">
+    <div class="cert-card">
+      <div class="cert-icon nptel">★</div>
+      <div class="cert-body">
+        <div class="cert-name">Affective Computing — NPTEL Elite</div>
+        <div class="cert-meta">Apr 2026 · #NPTEL26CS61S251806960</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon nptel">★</div>
+      <div class="cert-body">
+        <div class="cert-name">Cloud Computing — NPTEL</div>
+        <div class="cert-meta">Dec 2025 · #NPTEL25CS107S451800642</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon aws">☁</div>
+      <div class="cert-body">
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-meta">Dec 2025 · Amazon Web Services</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon google">G</div>
+      <div class="cert-body">
+        <div class="cert-name">Introduction to Git and GitHub</div>
+        <div class="cert-meta">Nov 2024 · Google · #KZN2MCSBH19E</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon ms">M</div>
+      <div class="cert-body">
+        <div class="cert-name">Career Essentials in Generative AI</div>
+        <div class="cert-meta">May 2024 · Microsoft & LinkedIn</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon udemy">U</div>
+      <div class="cert-body">
+        <div class="cert-name">Python Programming</div>
+        <div class="cert-meta">Sep 2024 · Udemy</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon gen">I</div>
+      <div class="cert-body">
+        <div class="cert-name">Market Research & Research Methodology</div>
+        <div class="cert-meta">Mar 2025 · Infosys Springboard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATION -->
+<section>
+  <div class="section-label">// 05 — publications</div>
+  <div class="section-title">Research <span>Work</span></div>
+  <div class="pub-card">
+    <div class="pub-icon">📄</div>
+    <div>
+      <div class="pub-title">Economic Growth and Development: A Comparative Analysis Between India and China</div>
+      <div class="pub-journal">International Journal of Sciences and Innovation Engineering (IJSCI) · Oct 8, 2025</div>
+      <p class="pub-desc">Comparative research analyzing economic growth and development trajectories of India and China as two of the world's most influential emerging economies, examining key indicators, policy frameworks, and future projections.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <div class="section-label">// 06 — education</div>
+  <div class="section-title">Academic <span>Background</span></div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-deg">Master of Computer Applications (MCA)</div>
+      <div class="edu-inst">D.Y. Patil Institute of MCA and Management, Akurdi, Pune</div>
+      <div class="edu-year">May 2024 – Present · Sem IV</div>
+      <div class="edu-note">Affiliated to Savitribai Phule Pune University · Focus: Python Programming, Data Structures, AI/ML · Poster presentation on Indian Philosophy & Ethics in IKS</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-deg">Bachelor of Computer Applications (BCA)</div>
+      <div class="edu-inst">Dr. Babasaheb Ambedkar Marathwada University, Aurangabad</div>
+      <div class="edu-year">Nov 2021 – Jun 2024</div>
+      <div class="edu-note">Specialization: Computer & Information Sciences · 🏆 1st Place — Poster Presentation on Blockchain Technology & Encrypted Networks · Project: Blood Donor & Donation Management System</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="text-align:center">// 07 — contact</div>
+  <div class="section-title">Let's <span>Connect</span></div>
+  <p style="color:var(--muted);max-width:480px;margin:0 auto 0.5rem;font-size:14px">Open to internship opportunities, collaborations, and exciting AI/ML projects. Reach out anytime!</p>
+  <div class="contact-links">
+    <a href="mailto:Durveshraysing43@gmail.com" class="contact-chip">✉ Durveshraysing43@gmail.com</a>
+    <a href="tel:+918530296612" class="contact-chip">☎ +91-8530296612</a>
+    <a href="https://github.com/DurveshRaysing1435" class="contact-chip">⌥ DurveshRaysing1435</a>
+    <a href="https://github.com/chikooo777" class="contact-chip">⌥ chikooo777</a>
+    <a href="https://www.linkedin.com/in/durvesh-raysing07" class="contact-chip">↗ LinkedIn Profile</a>
+  </div>
+</section>
+
+<footer>
+  <span>Built from Durvesh's resume · 2026</span>
+</footer>
+
+</body>
+</html>
